@@ -1,0 +1,241 @@
+/* ========================= generic css ===================== */
+:root {
+    --white:  #FFFFFF;
+    --gray-1: #333333;
+    --gray-2: #BFBFBF;
+    --gray-3: #EFEFEF;
+    --blue-1: #2F454E;
+    --blue-2: #6F98A8;
+    --blue-3: #2B8EAD;
+    --blue-4: #72C3DC;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.header {
+    background-color: var(--gray-1);
+    padding: 10px 0;
+    border-bottom: 5px solid var(--gray-2);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 auto;
+    color: var(--white);
+    text-align: center;
+}
+
+.footer {
+    margin: 15px;
+    text-align: center;
+}
+
+@media screen and (min-width: 376px) {
+    body {
+        background: var(--gray-3);
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .content {
+        width: 960px;
+        margin: auto;
+    }
+}
+
+/* ==================== shuffler css ====================== */
+
+.shuffler {
+    display: flex;
+    flex-direction: column;
+}
+.shuffler__boardwrap {
+    order: 2;
+}
+.shuffler__actionwrap {
+    order: 1;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+@media screen and (min-width: 376px) {
+    .shuffler__boardwrap {
+        width: 375px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .shuffler {
+        flex-direction: row;
+    }
+    
+    .shuffler__boardwrap {
+        order: 1;
+        flex-grow: 1;
+    }
+    
+    .shuffler__actionwrap {
+        order: 2;
+        width: 35%;
+        padding: 25px 50px;
+        box-sizing: border-box;
+    }
+}
+
+/* ========================= board css ============================ */
+
+.tile {
+    background-color: var(--gray-3);
+    border-left: 5px solid var(--gray-2);
+    text-align: center;
+    padding: 10px;
+    margin: 0 0 3px 0;
+    animation-name: fadein;
+    animation-duration: 700ms;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.tile--t3,
+.tile--t5,
+.tile--t9 {
+    border-color: var(--blue-1);
+    animation-delay: 100ms;
+}
+
+.tile--t1,
+.tile--t8 {
+    border-color: var(--blue-2);
+    animation-delay: 200ms;
+}
+
+.tile--t2,
+.tile--t4 {
+    border-color: var(--blue-3);
+    animation-delay: 300ms;
+}
+
+.tile--t6,
+.tile--t7 {
+    border-color: var(--gray-2);
+    animation-delay: 400ms;
+}
+
+@media screen and (min-width: 376px) {
+    .board {
+        width: 100%;
+        padding-bottom: 100%;
+        position: relative;
+    }
+
+    .board__grid {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto auto;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .tile {
+        position: relative;
+        margin: 0;
+    }
+    
+    .tile--t3,
+    .tile--t5,
+    .tile--t9 {
+        background-color: var(--blue-1);
+    }
+    
+    .tile--t1,
+    .tile--t8 {
+        background-color: var(--blue-2);
+    }
+    
+    .tile--t2,
+    .tile--t4 {
+        background-color: var(--blue-3);
+    }
+    
+    .tile--t6,
+    .tile--t7 {
+        background-color: var(--gray-2);
+    }
+
+    .tile__text {
+        width: 50%;
+        height: 50%;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        font-size: 80px;
+        line-height: 100%;
+        color: var(--white);
+        text-align: center;
+    }
+
+    @keyframes fadein {
+        0% {
+            opacity: 0.1;
+            transform: scale(0.9);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .tile__text {
+        font-size: 120px;
+    }
+}
+
+/* =================== button css ===================== */
+
+.btn_wrap {
+    display: inline;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 13px;
+    background-color: var(--blue-4);
+    padding: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 5px 0 var(--blue-3);
+    min-width: 100px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 960px) {
+    .btn--block {
+        display: block;
+    }
+
+    .btn_wrap {
+        display: block;
+        margin: 0 0 20px 0;
+    }
+}
